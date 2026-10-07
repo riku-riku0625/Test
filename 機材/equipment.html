@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>機材一覧 - 明治学院大学写真部</title>
+
+    <style>
+        /* 全体 */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        /* ヘッダー */
+        header {
+            background: #172554;
+            color: white;
+            padding: 25px 8%;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            opacity: 0.8;
+        }
+
+        /* メイン */
+        main {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 25px;
+        }
+
+        section {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        h2 {
+            color: #172554;
+            margin-top: 0;
+            font-size: 25px;
+        }
+
+        /* カテゴリーを横3列にする */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: start;
+            margin-top: 25px;
+        }
+
+        /* カテゴリーカード */
+        .category-toggle {
+            border: 1px solid #dbe2ea;
+            border-radius: 14px;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* カードの見出し */
+        .category-toggle summary {
+            min-height: 150px;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #f8fafc;
+            color: #172554;
+            cursor: pointer;
+            list-style: none;
+            transition: background 0.2s;
+        }
+
+        .category-toggle summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .category-toggle summary:hover {
+            background: #eff6ff;
+        }
+
+        /* アイコン */
+        .category-icon {
+            font-size: 36px;
+        }
+
+        /* カテゴリー名 */
+        .category-name {
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        /* 登録数 */
+        .category-count {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* 開閉マーク */
+        .category-toggle summary::after {
+            content: "+";
+            font-size: 20px;
+            color: #2563eb;
+        }
+
+        .category-toggle[open] summary::after {
+            content: "−";
+        }
+
+        /* 展開した機材 */
+        .equipment-item {
+            padding: 20px;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+        }
+
+        .equipment-item h3 {
+            color: #172554;
+            font-size: 16px;
+            margin: 0 0 10px;
+        }
+
+        .equipment-item p {
+            color: #666;
+            font-size: 13px;
+            margin: 0 0 15px;
+        }
+
+        /* 機材写真 */
+        .equipment-item img {
+            width: 100%;
+            max-width: 140px;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+        }
+
+        /* 予約ボタン */
+        .reserve-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            margin: 15px 0 0;
+            padding: 10px 8px;
+            background: white;
+            color: #172554;
+            border: 1px solid #2563eb;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .reserve-button::after {
+            content: "→";
+        }
+
+        .reserve-button:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* 戻るボタン */
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .back:hover {
+            background: #1d4ed8;
+        }
+
+        /* フッター */
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* タブレット */
+        @media (max-width: 800px) {
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* スマートフォン */
+        @media (max-width: 500px) {
+            main {
+                padding: 0 15px;
+                margin: 25px auto;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-toggle summary {
+                min-height: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>明治学院大学写真部</h1>
+        <p>機材一覧</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>写真部の機材</h2>
+            <p>カテゴリーをクリックすると、機材の詳細が表示されます。</p>
+
+            <div class="category-grid">
+
+                <!-- カメラ -->
+                <details class="category-toggle">
+                    <summary>
+                        <span class="category-icon">📷</span>
+                        <span class="category-name">カメラ</span>
+                    </summary>
+
+                    <div class="equipment-item">
+                        <h3>Nikon D7500</h3>
+                        <p>デジタル一眼レフカメラ</p>
+                        <img src="d7500.jpg" alt="Nikon D7500">
+
+                        <a href="reservation.html?equipment=D7500"
+                           class="reserve-button">
+                            この機材を予約する
+                        </a>
+                    </div>
+
+                    <div class="equipment-item">
+                        <h3>Nikon D810</h3>
+                        <p>デジタル一眼レフカメラ</p>
+
+                        <a href="reservation.html?equipment=D810"
+                           class="reserve-button">
+                            この機材を予約する
+                        </a>
+                    </div>
+                </details>
+
+                <!-- レンズ -->
+                <details class="category-toggle">
+                    <summary>
+                        <span class="category-icon">🔭</span>
+                        <span class="category-name">レンズ</span>
+                    </summary>
+
+                    <div class="equipment-item">
+                        <h3>AF-S DX 18-140mm</h3>
+                        <p>ズームレンズ</p>
+
+                        <a href="reservation.html?equipment=18-140mm"
+                           class="reserve-button">
+                            この機材を予約する
+                        </a>
+                    </div>
+                </details>
+
+             <!-- その他 -->
+<details class="category-toggle">
+    <summary>
+        <span class="category-icon">📦</span>
+        <span class="category-name">その他</span>
+    </summary>
+
+    <div class="equipment-item">
+        <h3>撮影用三脚</h3>
+        <p>撮影用三脚</p>
+
+        <a href="reservation.html?equipment=tripod"
+           class="reserve-button">
+            この機材を予約する
+        </a>
+                    </div>
+                </details>
+
+            </div>
+
+            <a class="back" href="index.html">トップページへ戻る</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>明治学院大学写真部</p>
+    </footer>
+
+</body>
+</html>

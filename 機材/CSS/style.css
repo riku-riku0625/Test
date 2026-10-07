@@ -1,0 +1,506 @@
+
+/* =========================
+   全体
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+
+/* =========================
+   ヘッダー
+   ========================= */
+
+header {
+    background: #172554;
+    color: white;
+    padding: 25px 8%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+header p {
+    margin: 5px 0 0;
+    opacity: 0.8;
+}
+
+
+/* =========================
+   メイン
+   ========================= */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 25px;
+}
+
+
+/* =========================
+   トップ
+   ========================= */
+
+.welcome {
+    background: linear-gradient(120deg, #172554, #2563eb);
+    color: white;
+    padding: 60px 45px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.welcome h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.welcome p {
+    font-size: 18px;
+}
+
+
+/* =========================
+   セクション
+   ========================= */
+
+.equipment,
+.notice,
+.contact {
+    background: white;
+    padding: 35px;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.equipment h2,
+.notice h2,
+.contact h2 {
+    margin-top: 0;
+    color: #172554;
+    font-size: 25px;
+}
+
+
+/* =========================
+   トップページのカード
+   ========================= */
+
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.card {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid #dbe2ea;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+}
+
+
+/* アイコン */
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+
+/* カードタイトル */
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 21px;
+}
+
+
+/* カード説明 */
+
+.card p {
+    color: #666;
+    font-size: 14px;
+    min-height: 45px;
+}
+
+
+/* =========================
+   通常のボタン
+   ========================= */
+
+button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   お知らせ
+   ========================= */
+
+.notice {
+    border-left: 6px solid #2563eb;
+}
+
+.notice li {
+    margin: 10px 0;
+}
+
+
+/* =========================
+   戻るボタン
+   ========================= */
+
+.back {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.back:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   機材カテゴリーの配置
+   ========================= */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+    margin-top: 25px;
+}
+
+
+/* =========================
+   カテゴリーカード
+   ========================= */
+
+.category-toggle {
+    background: white;
+    border: 1px solid #dbe2ea;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s;
+}
+
+.category-toggle[open] {
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+}
+
+
+/* カードの見出し */
+
+.category-toggle summary {
+    min-height: 150px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f8fafc;
+    color: #172554;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.2s;
+}
+
+.category-toggle summary::-webkit-details-marker {
+    display: none;
+}
+
+.category-toggle summary:hover {
+    background: #eff6ff;
+}
+
+
+/* カテゴリーアイコン */
+
+.category-icon {
+    font-size: 36px;
+}
+
+
+/* カテゴリー名 */
+
+.category-name {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+
+/* 登録点数 */
+
+.category-count {
+    color: #64748b;
+    font-size: 13px;
+}
+
+
+/* 開閉マーク */
+
+.category-toggle summary::after {
+    content: "+";
+    font-size: 20px;
+    color: #2563eb;
+}
+
+.category-toggle[open] summary::after {
+    content: "−";
+}
+
+
+/* =========================
+   展開された機材
+   ========================= */
+
+.equipment-item {
+    padding: 20px;
+    border-top: 1px solid #e2e8f0;
+    background: white;
+}
+
+.equipment-item h3 {
+    color: #172554;
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+
+.equipment-item p {
+    color: #666;
+    font-size: 13px;
+    margin: 0 0 15px;
+}
+
+
+/* 機材写真 */
+
+.equipment-item img {
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+
+
+/* =========================
+   機材予約ボタン
+   ========================= */
+
+.reserve-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin: 15px 0 0;
+    padding: 10px 8px;
+    background: white;
+    color: #172554;
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.reserve-button::after {
+    content: "→";
+    font-size: 16px;
+}
+
+.reserve-button:hover {
+    background: #2563eb;
+    color: white;
+}
+
+
+/* =========================
+   Excel埋め込み
+   ========================= */
+
+.excel-container {
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.excel-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* =========================
+   フッター
+   ========================= */
+
+footer {
+    background: #172554;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+
+/* =========================
+   タブレット対応
+   ========================= */
+
+@media (max-width: 800px) {
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================
+   スマートフォン対応
+   ========================= */
+
+@media (max-width: 500px) {
+    main {
+        padding: 25px 15px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-toggle summary {
+        min-height: 120px;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .welcome {
+        padding: 35px 25px;
+    }
+}
+
+/* カテゴリー一覧 */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+    align-items: stretch;
+}
+
+/* カテゴリーカード */
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 220px;
+    padding: 25px 15px;
+    background: #f8fafc;
+    border: 1px solid #dbe2ea;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #172554;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* カードにカーソルを合わせたとき */
+.category-card:hover {
+    background: #eff6ff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* アイコン */
+.category-card .category-icon {
+    font-size: 42px;
+}
+
+/* カテゴリー名 */
+.category-card .category-name {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+/* 説明 */
+.category-card .category-count {
+    color: #64748b;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* 一覧を見るボタン風の表示 */
+.category-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 9px 18px;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* タブレット */
+@media (max-width: 800px) {
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* スマートフォン */
+@media (max-width: 500px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        min-height: 160px;
+    }
+}
